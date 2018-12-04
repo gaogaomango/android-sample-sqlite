@@ -45,6 +45,10 @@ public class DBManager {
         return cursor;
     }
 
+    public int delete(String selection, String[] selectionArgs) {
+        return sQLiteDatabase.delete(TABLE_NAME_USER, selection, selectionArgs);
+    }
+
 
     static class DatabaseHelperUser extends SQLiteOpenHelper {
 

@@ -14,10 +14,12 @@ public class UserItemAdapter extends BaseAdapter {
 
     List<Users> mListData;
     WeakReference<Activity> mActivity;
+    DBManager mDBManager;
 
     public UserItemAdapter(Activity activity, List<Users> listData) {
         this.mActivity = new WeakReference<>(activity);
         this.mListData = listData;
+        this.mDBManager = new DBManager(activity);
     }
 
     @Override
@@ -44,6 +46,14 @@ public class UserItemAdapter extends BaseAdapter {
         ((TextView) view.findViewById(R.id.userId)).setText(String.valueOf(users.getId()));
         ((TextView) view.findViewById(R.id.showUserName)).setText(users.getUserName());
         ((TextView) view.findViewById(R.id.showUserPassword)).setText(users.getUserPassword());
+        view.findViewById(R.id.deleteBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] args = {String.valueOf(users.getId())};
+                mDBManager.delete("id = ? ", args);
+                ((MainActivity) mActivity.get()).loadElements();
+            }
+        });
 
         return view;
     }

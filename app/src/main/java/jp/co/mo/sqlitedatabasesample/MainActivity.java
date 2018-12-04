@@ -59,20 +59,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                     break;
                 case R.id.loadBtn:
-                    List<Users> list = new ArrayList<>();
-                    Cursor cursor = dbManager.query(null, null, null, DBManager.COL_USER_NAME);
-                    if (cursor.moveToFirst()) {
-                        do {
-                            list.add(new Users(Integer.valueOf(cursor.getString(cursor.getColumnIndex(DBManager.COL_ID))).intValue(),
-                                    cursor.getString(cursor.getColumnIndex(DBManager.COL_USER_NAME)),
-                                    cursor.getString(cursor.getColumnIndex(DBManager.COL_USER_PASSWOED))));
-                        } while (cursor.moveToNext());
-                    }
-                    UserItemAdapter userItemAdapter = new UserItemAdapter(this, list);
-                    listView.setAdapter(userItemAdapter);
-
+                    loadElements();
                     break;
             }
         }
+    }
+
+    public void loadElements() {
+        List<Users> list = new ArrayList<>();
+        Cursor cursor = dbManager.query(null, null, null, DBManager.COL_USER_NAME);
+        if (cursor.moveToFirst()) {
+            do {
+                list.add(new Users(Integer.valueOf(cursor.getString(cursor.getColumnIndex(DBManager.COL_ID))).intValue(),
+                        cursor.getString(cursor.getColumnIndex(DBManager.COL_USER_NAME)),
+                        cursor.getString(cursor.getColumnIndex(DBManager.COL_USER_PASSWOED))));
+            } while (cursor.moveToNext());
+        }
+        UserItemAdapter userItemAdapter = new UserItemAdapter(this, list);
+        listView.setAdapter(userItemAdapter);
     }
 }
