@@ -24,7 +24,10 @@
             android:id="@+id/userPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
             android:hint="enter password"/>
+
     </LinearLayout>
 
     <Button
@@ -38,6 +41,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Load" />
+
+    <ListView
+        android:id="@+id/userList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </ListView>
 
 
 </LinearLayout>
