@@ -50,7 +50,7 @@ public class UserItemAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 String[] args = {String.valueOf(users.getId())};
-                mDBManager.delete("id = ? ", args);
+                mDBManager.delete(DBManager.COL_ID + " = ? ", args);
                 ((MainActivity) mActivity.get()).loadElements();
             }
         });
