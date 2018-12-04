@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Cursor cursor = dbManager.query(null, null, null, DBManager.COL_USER_NAME);
         if (cursor.moveToFirst()) {
             do {
-                list.add(new Users(Integer.valueOf(cursor.getString(cursor.getColumnIndex(DBManager.COL_ID))).intValue(),
+                list.add(new Users(cursor.getInt(cursor.getColumnIndex(DBManager.COL_ID)),
                         cursor.getString(cursor.getColumnIndex(DBManager.COL_USER_NAME)),
                         cursor.getString(cursor.getColumnIndex(DBManager.COL_USER_PASSWOED))));
             } while (cursor.moveToNext());

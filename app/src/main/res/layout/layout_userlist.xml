@@ -8,27 +8,35 @@
         android:id="@+id/userId"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:text="id" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_weight="2"
+        android:layout_weight="4"
         android:orientation="vertical">
 
-        <TextView
+        <EditText
             android:id="@+id/showUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="userName" />
 
-        <TextView
+        <EditText
             android:id="@+id/showUserPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="userPassword" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/editBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:text="Edit" />
 
     <Button
         android:id="@+id/deleteBtn"
